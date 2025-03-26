@@ -16,8 +16,8 @@ def setup_context():
     context.generate_relin_keys()
     return context
 
-application = Flask(__name__)
-socketio = SocketIO(application)
+app = Flask(__name__)
+socketio = SocketIO(app)
 
 CHAT_FILE = 'chat_messages.txt'
 AUTH_FILE = 'authorize.txt'
@@ -45,7 +45,7 @@ except (FileNotFoundError, json.JSONDecodeError):
 active_users = {}
 
 contexts={}
-@application.route('/')
+@app.route('/')
 def index():
     return render_template('index.html')
 
@@ -110,5 +110,5 @@ def handle_message(data):
     
 
 if __name__ == '__main__':
-    socketio.run(application, host='0.0.0.0', debug=True)
+    socketio.run(app, host='0.0.0.0', debug=True)
 

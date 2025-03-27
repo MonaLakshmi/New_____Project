@@ -1,3 +1,4 @@
 Flask==3.1.0
 Flask_SocketIO==5.3.6
 tenseal==0.3.16
+gunicorn==21.2.0
